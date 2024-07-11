@@ -44,3 +44,36 @@ body {
 .icon {
     width: 45px;
 }
+
+
+/* Assuming these are generic styles, adjust as needed */
+
+#languageSelect {
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    appearance: none;
+    /* Removes default arrow in some browsers */
+    cursor: pointer;
+    /* Show pointer cursor on hover */
+    outline: none;
+    /* Remove focus outline */
+    width: 200px;
+    /* Adjust width as needed */
+}
+
+#languageSelect option {
+    background-color: #fff;
+    color: #333;
+}
+
+#languageSelect option:hover {
+    background-color: #f0f0f0;
+}
+
+#languageSelect option:checked {
+    font-weight: bold;
+}

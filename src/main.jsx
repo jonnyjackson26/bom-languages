@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom/client'
-import './index.css'
 import { Home } from './pages/Home/_Home.jsx'
 import { BookPage } from './pages/BookPage/BookPage.jsx'
 import { createHashRouter, RouterProvider } from 'react-router-dom'
