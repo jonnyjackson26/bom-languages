@@ -1,0 +1,12 @@
+#container {
+    display: flex;
+}
+
+.link {
+    color: rgb(213, 73, 73);
+}
+
+.link:not(:last-child)+.link::before {
+    /*add a < after each link except for last */
+    content: " < ";
+}
