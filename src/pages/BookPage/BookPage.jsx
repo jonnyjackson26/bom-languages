@@ -23,7 +23,7 @@ export function BookPage({ book }) {
     return (
         <>
             <NavBar book={book} chapter={undefined} />
-            <h1 class="title">
+            <h1 className="title">
                 {theBookOfBOOKNAME(language, book.bookName)} {/* The Book of Jacob, or El Libro de Jacob etc */}
             </h1>
 

@@ -9,6 +9,7 @@ import GridListViewSwitcher from "../../components/GridListViewSwitcher/GridList
 import DarkLightToggle from '../../components/DarkLightToggle/DarkLightToggle.jsx';
 
 import { Context } from "../../main.jsx";
+import SerifSansSerifToggle from '../../components/SerifSansSerifToggle/SerifSansSerifToggle.jsx';
 
 
 export function Home() {
@@ -44,6 +45,7 @@ export function Home() {
 
             <GridListViewSwitcher onViewChange={handleViewChange} />
             <DarkLightToggle onToggle={handleLightDarkModeToggle} />
+            <SerifSansSerifToggle />
 
             <div className={isGridView ? "book-container-grid" : "book-container-list"}>
                 {books.map((book) => (
