@@ -6,12 +6,15 @@ import NavBar from "../../components/NavBar/NavBar.jsx";
 import myData from "../../../public/data/_languages.js";
 import DocumentTitle from "../../components/DocumentTitle.jsx";
 import GridListViewSwitcher from "../../components/GridListViewSwitcher/GridListViewSwitcher.jsx";
+import DarkLightToggle from '../../components/DarkLightToggle/DarkLightToggle.jsx';
 
 import { Context } from "../../main.jsx";
+
 
 export function Home() {
     const [language, setLanguage] = useContext(Context);
     const [isGridView, setIsGridView] = useState(true); // State for view mode
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     DocumentTitle(myData[language]["bookOfMormon"]);
 
@@ -19,14 +22,28 @@ export function Home() {
         setIsGridView(isGrid); // Update view mode state
     };
 
+    const handleLightDarkModeToggle = (mode) => {
+        setIsDarkMode(mode);
+        if (mode) {
+            document.body.classList.add('dark-mode');
+            document.body.classList.remove('light-mode');
+        } else {
+            document.body.classList.add('light-mode');
+            document.body.classList.remove('dark-mode');
+        }
+    };
+
+
     return (
         <>
             <NavBar book={undefined} chapter={undefined} />
+
             <h1 className="title">
                 {myData[language]["book-of-mormon"]} {/*The Book of Mormon: Another Testament of Jesus Christ*/}
             </h1>
 
             <GridListViewSwitcher onViewChange={handleViewChange} />
+            <DarkLightToggle onToggle={handleLightDarkModeToggle} />
 
             <div className={isGridView ? "book-container-grid" : "book-container-list"}>
                 {books.map((book) => (
