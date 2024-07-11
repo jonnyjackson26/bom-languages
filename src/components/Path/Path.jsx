@@ -9,7 +9,7 @@ const Path = ({ book, chapter }) => {
     const [language, setLanguage] = useContext(Context);
     return (
         <>
-            <div id="container">
+            <div id="path-container">
                 <Link to="/" className="link">
                     {myData[language]["bookOfMormon"]}
                 </Link>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import './BookPage.css'
 import NavBar from "../../components/NavBar/NavBar.jsx";
 import React, { useState, useEffect, useContext } from 'react';
 import DocumentTitle from "../../components/DocumentTitle.jsx";
@@ -22,7 +23,7 @@ export function BookPage({ book }) {
     return (
         <>
             <NavBar book={book} chapter={undefined} />
-            <h1>
+            <h1 class="title">
                 {theBookOfBOOKNAME(language, book.bookName)} {/* The Book of Jacob, or El Libro de Jacob etc */}
             </h1>
 

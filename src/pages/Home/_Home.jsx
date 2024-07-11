@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import './Home.css';
 import React, { useState, useEffect, useContext } from 'react';
 import books from '../../../public/data/books.js';
 import NavBar from "../../components/NavBar/NavBar.jsx";
@@ -16,15 +17,17 @@ export function Home() {
     return (
         <>
             <NavBar book={undefined} chapter={undefined} />
-            <h1>
+            <h1 className="title">
                 {myData[language]["book-of-mormon"]} {/*The Book of Mormon: Another Testament of Jesus Christ*/}
             </h1>
 
-            {books.map((book) => (
-                <Link key={book.urlName} to={`/${book.urlName}`}>
-                    {myData[language][book.urlName]} {/* Worte von Mormon or Words of Mormon */}
-                </Link>
-            ))}
+            <div className="book-container">
+                {books.map((book) => (
+                    <Link className="book" key={book.urlName} to={`/${book.urlName}`}>
+                        {myData[language][book.urlName]} {/* Worte von Mormon or Words of Mormon */}
+                    </Link>
+                ))}
+            </div>
         </>
     )
 }

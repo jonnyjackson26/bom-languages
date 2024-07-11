@@ -24,7 +24,7 @@ export function ChapterPage({ book, chapter }) {
                 const response = await fetch(path);
                 const text = await response.text();
                 const lines = text.split('\n').slice(0, -1); //I slice because the text files have an empty \n at the end
-                setVerses(lines.map((line, index) => <p key={index}> {index + 1} {line}</p>));
+                setVerses(lines.map((line, index) => <p className="verse-class" key={index}> {index + 1} {line}</p>));
 
             } catch (error) {
                 console.error('Error fetching verses:', error);
@@ -38,12 +38,14 @@ export function ChapterPage({ book, chapter }) {
     return (
         <>
             <NavBar book={book} chapter={chapter} />
-            <h1>
+            <h1 className="title">
                 {theBookOfBOOKNAMEchapterX(language, myData[language][book.urlName], chapter)}
             </h1>
 
-            <NextButton info={getPrevButtonInfo(book, chapter)} />
-            <NextButton info={getNextButtonInfo(book, chapter)} />
+            <div className="nextButton-container">
+                <NextButton info={getPrevButtonInfo(book, chapter)} />
+                <NextButton info={getNextButtonInfo(book, chapter)} />
+            </div>
 
             {verses}
         </>

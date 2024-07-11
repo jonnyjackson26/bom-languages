@@ -1,76 +1,8 @@
-span.dialouge {
-    background-color: black;
-    /* Change the background color to yellow */
-    color: black;
-    /* Change the text color to black */
-    font-weight: bold;
-    /* Increase the font weight to make the text bold */
-    /* Add any additional styling properties as needed */
+.verse-class {
+    font-family: Arial, sans-serif;
 }
 
-/* Define CSS classes for each unique name */
-.lehi {
-    background-color: lightblue;
-    /* Choose a background color for 'lehi' */
-}
-
-.lord {
-    background-color: lightgreen;
-    /* Choose a background color for 'lord' */
-}
-
-.nephi {
-    background-color: lightcoral;
-    /* Choose a background color for 'nephi' */
-}
-
-/* Define CSS classes for other unique names similarly */
-.laban {
-    background-color: lightsalmon;
-    /* Choose a background color for 'laban' */
-}
-
-.angel {
-    background-color: lightyellow;
-    /* Choose a background color for 'angel' */
-}
-
-.lamanlemuel {
-    background-color: lightpink;
-    /* Choose a background color for 'lamanlemuel' */
-}
-
-.spirit {
-    background-color: lightgray;
-    /* Choose a background color for 'spirit' */
-}
-
-.sariah {
-    background-color: lightseagreen;
-    /* Choose a background color for 'sariah' */
-}
-
-.futurejohnthebaptist {
-    background-color: lightskyblue;
-    /* Choose a background color for 'futurejohnthebaptist' */
-}
-
-.daughtersofishmael {
-    background-color: lightsteelblue;
-    /* Choose a background color for 'daughtersofishmael' */
-}
-
-.zenos {
-    background-color: lightgoldenrodyellow;
-    /* Choose a background color for 'zenos' */
-}
-
-.god {
-    background-color: lightcoral;
-    /* Choose a background color for 'god' */
-}
-
-.moses {
-    background-color: lightgreen;
-    /* Choose a background color for 'moses' */
+.nextButton-container {
+    display: flex;
+    justify-content: space-between;
 }
