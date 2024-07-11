@@ -23,7 +23,7 @@ const NavBar = ({ book, chapter }) => {
             >
                 {Object.keys(myData).map((langKey) => (
                     <option key={langKey} value={langKey}>
-                        {language === langKey ? `🌐 - ${myData[langKey][langKey]}` : `${myData[langKey][langKey]} / ${myData[language][langKey]}`}
+                        {language === langKey ? `🌐` : `${myData[langKey][langKey]} / ${myData[language][langKey]}`}
                     </option>
                 ))}
             </select>
