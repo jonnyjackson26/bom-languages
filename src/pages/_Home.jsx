@@ -25,12 +25,6 @@ export function Home() {
                     {myData[language][book.urlName]} {/* Worte von Mormon or Words of Mormon */}
                 </Link>
             ))}
-
-            {/*characters */}
-            <Link key="family_tree" to="/characters">Character Tree of BOM</Link>
-
-            {/*timeline */}
-            <Link key="timeline" to="/timeline">Timeline of BOM</Link>
         </>
     )
 }
