@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
-import NavBar from "../components/NavBar/NavBar.jsx";
+import NavBar from "../../components/NavBar/NavBar.jsx";
 import React, { useState, useEffect, useContext } from 'react';
-import DocumentTitle from "../components/DocumentTitle.jsx";
+import DocumentTitle from "../../components/DocumentTitle.jsx";
 
-import myData, { theBookOfBOOKNAME } from "../../public/data/_languages.js"
+import myData, { theBookOfBOOKNAME } from "../../../public/data/_languages.js"
 
-import { Context } from "../main";
+import { Context } from "../../main.jsx";
 
 export function BookPage({ book }) {
     const [language, setLanguage] = useContext(Context);

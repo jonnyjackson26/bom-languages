@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { Home } from './pages/_Home'
-import { BookPage } from './pages/BookPage'
+import { Home } from './pages/Home/_Home.jsx'
+import { BookPage } from './pages/BookPage/BookPage.jsx'
 import { createHashRouter, RouterProvider } from 'react-router-dom'
 import books from '../public/data/books'
 import { ChapterPage } from './pages/ChapterPage/ChapterPage.jsx'
