@@ -1,0 +1,22 @@
+.view-switcher {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.view-switcher-btn {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.view-switcher-btn.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}

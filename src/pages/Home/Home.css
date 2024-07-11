@@ -2,7 +2,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.book-container {
+.book-container-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -11,7 +11,7 @@
     /* Center books horizontally */
 }
 
-.book {
+.book-grid {
     flex: 1 1 100px;
     /* Flex-grow, flex-shrink, flex-basis */
     max-width: 200px;
@@ -45,7 +45,43 @@
     /* Use Roboto font */
 }
 
-.book:hover {
+.book-grid:hover {
     transform: translateY(-5px);
     /* Move book up slightly on hover */
+}
+
+.book-container-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Adjust spacing between books */
+}
+
+.book-list {
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.book-list:hover {
+    transform: translateY(-3px);
+    /* Adjust hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Add slight shadow on hover */
+}
+
+.book-list:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.book-list:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
