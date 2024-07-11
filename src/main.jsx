@@ -6,6 +6,7 @@ import { createHashRouter, RouterProvider } from 'react-router-dom'
 import books from '../public/data/books'
 import { ChapterPage } from './pages/ChapterPage/ChapterPage.jsx'
 import NavBar from './components/NavBar/NavBar.jsx'
+import SplitScreen from './pages/SplitScreen/SplitScreen.jsx';
 let routerList = [];
 
 //each books page
@@ -31,6 +32,10 @@ const router = createHashRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/split-screen",
+    element: <SplitScreen />,
   },
   ...routerList
 ])

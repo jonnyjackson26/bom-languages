@@ -7,6 +7,7 @@ import myData from "../../../public/data/_languages.js";
 import DocumentTitle from "../../components/DocumentTitle.jsx";
 import GridListViewSwitcher from "../../components/GridListViewSwitcher/GridListViewSwitcher.jsx";
 import DarkLightToggle from '../../components/DarkLightToggle/DarkLightToggle.jsx';
+import IconButton from '../../components/IconButton/IconButton.jsx';
 
 import { Context } from "../../main.jsx";
 import SerifSansSerifToggle from '../../components/SerifSansSerifToggle/SerifSansSerifToggle.jsx';
@@ -46,6 +47,10 @@ export function Home() {
             <GridListViewSwitcher onViewChange={handleViewChange} />
             <DarkLightToggle onToggle={handleLightDarkModeToggle} />
             <SerifSansSerifToggle />
+            <IconButton to="/home" icon="fas fa-home" />
+            <IconButton to="/settings" icon="fas fa-cog" />
+            <IconButton to="/split-screen" icon="fa-solid fa-columns" />
+
 
             <div className={isGridView ? "book-container-grid" : "book-container-list"}>
                 {books.map((book) => (

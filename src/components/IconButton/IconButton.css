@@ -1,0 +1,23 @@
+.icon-button {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #2196f3;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-button i {
+    font-size: 24px;
+}
+
+.icon-button:hover {
+    background-color: #1976d2;
+    transform: scale(1.1);
+}
+
+.icon-button:active {
+    background-color: #0d47a1;
+}

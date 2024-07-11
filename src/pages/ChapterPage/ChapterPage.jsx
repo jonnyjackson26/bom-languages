@@ -24,7 +24,10 @@ export function ChapterPage({ book, chapter }) {
                 const response = await fetch(path);
                 const text = await response.text();
                 const lines = text.split('\n').slice(0, -1); //I slice because the text files have an empty \n at the end
-                setVerses(lines.map((line, index) => <p className="verse-class" key={index}> {index + 1} {line}</p>));
+                setVerses(lines.map((line, index) => <p className="verse-class" key={index}>
+                    <span className="verse-number-class" >{index + 1} </span>
+                    {line}
+                </p>));
 
             } catch (error) {
                 console.error('Error fetching verses:', error);
