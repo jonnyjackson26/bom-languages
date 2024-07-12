@@ -46,17 +46,16 @@ export function SplitScreen() {
 
     return (
         <>
-            <NavBar book={undefined} chapter={undefined} />
-            {/* will need to have some different type of navbar for split screen pages */}
-
-            <SplitScreenLayoutToggle onToggle={handleLayoutChange} />
-
-            <div className="splitscreen-container">
-                <div id="splitscreen-1">
-                    <ScriptureBroswer />
-                </div>
-                <div id='splitscreen-2'>
-                    <ScriptureBroswer />
+            <div className="split-screen-wrapper">
+                <NavBar book={undefined} chapter={undefined} />
+                <SplitScreenLayoutToggle onToggle={handleLayoutChange} />
+                <div className="splitscreen-container">
+                    <div id="splitscreen-1">
+                        <ScriptureBroswer />
+                    </div>
+                    <div id='splitscreen-2'>
+                        <ScriptureBroswer />
+                    </div>
                 </div>
             </div>
         </>
