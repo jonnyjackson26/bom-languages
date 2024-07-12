@@ -20,7 +20,10 @@ const ScriptureBrowser = () => {
                 selectedChapter ? (
                     <ChapterPage book={selectedBook} chapter={selectedChapter} />
                 ) : (
-                    <BookPage book={selectedBook} />
+                    <BookPage book={selectedBook}
+                        splitScreen={true}
+                        setSelectedChapter={setSelectedChapter}
+                    />
                 )
             ) : (
                 <Home

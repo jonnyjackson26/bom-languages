@@ -8,15 +8,28 @@ import myData, { theBookOfBOOKNAME } from "../../../public/data/_languages.js"
 
 import { Context } from "../../main.jsx";
 
-export function BookPage({ book }) {
+export function BookPage({ book, splitScreen, setSelectedChapter }) {
     const [language, setLanguage] = useContext(Context);
 
-    DocumentTitle(myData[language][book.urlName]);
+    if (splitScreen === false) {
+        DocumentTitle(myData[language][book.urlName]);
+    }
 
     const chapterLinks = [];
     for (let i = 1; i <= book.numOfChapters; i++) {
         chapterLinks.push(
-            <Link key={i} to={`${i}`}>{myData[language]["chapter"]} {i}</Link> // Chapter 6 or Capitulo 6
+            <Link
+                key={i}
+                to={splitScreen ? '#' : `/${book.urlName}`}
+                onClick={(e) => {
+                    if (splitScreen) {
+                        e.preventDefault(); // Prevent default link behavior
+                        setSelectedChapter(i); // Update the selected book
+                    }
+                }}
+            >
+                {myData[language]["chapter"]} {i}
+            </Link> // Chapter 6 or Capitulo 6
         );
     }
 
