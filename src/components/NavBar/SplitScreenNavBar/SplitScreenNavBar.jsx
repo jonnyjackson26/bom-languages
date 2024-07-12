@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
-import './NavBar.css';
-import Path from './Path/Path.jsx'
-import books from '../../../public/data/books.js';
-import myData from "../../../public/data/_languages.js";
-import { Context } from "../../main.jsx";
+import './SplitScreenNavBar.css';
+import SplitScreenPath from '../SplitScreenPath/SplitScreenPath.jsx';
+import books from '../../../../public/data/books.js';
+import myData from "../../../../public/data/_languages.js";
+import { Context } from "../../../main.jsx";
 
-const NavBar = ({ book, chapter }) => {
+const SplitScreenNavBar = ({ book, chapter }) => {
     const [language, setLanguage] = useContext(Context);
 
     const handleLanguageChange = (lang) => {
@@ -13,11 +13,11 @@ const NavBar = ({ book, chapter }) => {
     };
 
     return (
-        <nav className="navbar">
-            <Path book={book} chapter={chapter} />
+        <nav className="splitscreen-navbar">
+            <SplitScreenPath book={book} chapter={chapter} />
 
             <select
-                id="languageSelect"
+                id="splitscreen-languageSelect"
                 onChange={(e) => handleLanguageChange(e.target.value)}
                 value={language}
             >
@@ -32,4 +32,4 @@ const NavBar = ({ book, chapter }) => {
     );
 };
 
-export default NavBar;
+export default SplitScreenNavBar;

@@ -21,7 +21,8 @@
 #splitscreen-2 {
     flex: 1;
     height: 100%;
-    border: 5px solid gray;
+    border: 0;
+    padding: 2px;
 }
 
 #splitscreen-1.row-layout,

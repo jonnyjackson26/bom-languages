@@ -1,0 +1,70 @@
+.splitscreen-navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    z-index: 1000;
+    /* Ensure navbar stays on top */
+}
+
+.splitscreen-brand a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+
+.splitscreen-nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.splitscreen-nav-links li {
+    margin-right: 20px;
+}
+
+.splitscreen-nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.splitscreen-icon {
+    width: 45px;
+}
+
+
+/* Assuming these are generic styles, adjust as needed */
+
+#splitscreen-languageSelect {
+    font-size: 16px;
+    margin-right: 7px;
+    border: 0px;
+    background-color: transparent;
+    color: white;
+    appearance: none;
+    /* Removes default arrow in some browsers */
+    cursor: pointer;
+    /* Show pointer cursor on hover */
+    outline: none;
+    /* Remove focus outline */
+    width: 50px;
+    /* Adjust width as needed */
+}
+
+#splitscreen-languageSelect option {
+    background-color: #fff;
+    color: #333;
+}
+
+#splitscreen-languageSelect option:hover {
+    background-color: #f0f0f0;
+}
+
+#splitscreen-languageSelect option:checked {
+    font-weight: bold;
+}

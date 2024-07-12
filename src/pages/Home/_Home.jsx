@@ -8,17 +8,18 @@ import DocumentTitle from "../../components/DocumentTitle.jsx";
 import GridListViewSwitcher from "../../components/GridListViewSwitcher/GridListViewSwitcher.jsx";
 import DarkLightToggle from '../../components/DarkLightToggle/DarkLightToggle.jsx';
 import IconButton from '../../components/IconButton/IconButton.jsx';
-
 import { Context } from "../../main.jsx";
 import SerifSansSerifToggle from '../../components/SerifSansSerifToggle/SerifSansSerifToggle.jsx';
 
-
-export function Home() {
+export function Home({ splitScreen, setSelectedBook }) {
     const [language, setLanguage] = useContext(Context);
     const [isGridView, setIsGridView] = useState(true); // State for view mode
     const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isSerif, setIsSerif] = useState(false); // State for font style
 
-    DocumentTitle(myData[language]["bookOfMormon"]);
+    if (splitScreen === false) {
+        DocumentTitle(myData[language]["bookOfMormon"]);
+    }
 
     const handleViewChange = (isGrid) => {
         setIsGridView(isGrid); // Update view mode state
@@ -35,26 +36,49 @@ export function Home() {
         }
     };
 
+    const handleFontToggle = (isSerif) => {
+        setIsSerif(isSerif);
+        if (isSerif) {
+            document.body.classList.add('serif-font');
+            document.body.classList.remove('sans-serif-font');
+        } else {
+            document.body.classList.add('sans-serif-font');
+            document.body.classList.remove('serif-font');
+        }
+    };
 
     return (
         <>
             <NavBar book={undefined} chapter={undefined} />
 
             <h1 className="title">
-                {myData[language]["book-of-mormon"]} {/*The Book of Mormon: Another Testament of Jesus Christ*/}
+                {myData[language]["book-of-mormon"]} {/* The Book of Mormon: Another Testament of Jesus Christ */}
             </h1>
 
-            <GridListViewSwitcher onViewChange={handleViewChange} />
-            <DarkLightToggle onToggle={handleLightDarkModeToggle} />
-            <SerifSansSerifToggle />
-            <IconButton to="/home" icon="fas fa-home" />
-            <IconButton to="/settings" icon="fas fa-cog" />
-            <IconButton to="/split-screen" icon="fa-solid fa-language" />
-
+            {!splitScreen && (
+                <>
+                    <GridListViewSwitcher onViewChange={handleViewChange} />
+                    <DarkLightToggle onToggle={handleLightDarkModeToggle} />
+                    <SerifSansSerifToggle onToggle={handleFontToggle} />
+                    <IconButton to="/home" icon="fas fa-home" />
+                    <IconButton to="/settings" icon="fas fa-cog" />
+                    <IconButton to="/split-screen" icon="fa-solid fa-language" />
+                </>
+            )}
 
             <div className={isGridView ? "book-container-grid" : "book-container-list"}>
                 {books.map((book) => (
-                    <Link className={isGridView ? "book-grid" : "book-list"} key={book.urlName} to={`/${book.urlName}`}>
+                    <Link
+                        className={isGridView ? "book-grid" : "book-list"}
+                        key={book.urlName}
+                        to={splitScreen ? '#' : `/${book.urlName}`}
+                        onClick={(e) => {
+                            if (splitScreen) {
+                                e.preventDefault(); // Prevent default link behavior
+                                setSelectedBook(book); // Update the selected book
+                            }
+                        }}
+                    >
                         {myData[language][book.urlName]}
                     </Link>
                 ))}

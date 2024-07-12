@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react';
-import myData from '../../../public/data/_languages';
-import './Path.css';
+import myData from '../../../../public/data/_languages'
+import './SplitScreenPath.css';
 
-import { Context } from "../../main"; //can make custom hook
+import { Context } from "../../../main"; //can make custom hook
 
-const Path = ({ book, chapter }) => {
+const SplitScreenPath = ({ book, chapter }) => {
     const [language, setLanguage] = useContext(Context);
     return (
         <>
@@ -25,4 +25,4 @@ const Path = ({ book, chapter }) => {
         </>
     )
 }
-export default Path;
+export default SplitScreenPath;
