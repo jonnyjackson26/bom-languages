@@ -1,0 +1,62 @@
+.layout-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.toggle-option {
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* Needed for tooltip positioning */
+}
+
+.toggle-option input {
+    display: none;
+}
+
+.toggle-option label {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.toggle-option input:checked+label {
+    background-color: #e0e0e0;
+}
+
+.toggle-option label:hover {
+    background-color: #ddd;
+}
+
+/* Tooltip styling */
+.toggle-option label[title]::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    /* Adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    opacity: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    font-size: 12px;
+}
+
+.toggle-option label:hover::after {
+    opacity: 1;
+}

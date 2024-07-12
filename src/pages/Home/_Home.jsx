@@ -49,7 +49,7 @@ export function Home() {
             <SerifSansSerifToggle />
             <IconButton to="/home" icon="fas fa-home" />
             <IconButton to="/settings" icon="fas fa-cog" />
-            <IconButton to="/split-screen" icon="fa-solid fa-columns" />
+            <IconButton to="/split-screen" icon="fa-solid fa-language" />
 
 
             <div className={isGridView ? "book-container-grid" : "book-container-list"}>
