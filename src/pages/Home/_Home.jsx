@@ -49,7 +49,9 @@ export function Home({ splitScreen, setSelectedBook }) {
 
     return (
         <>
-            <NavBar book={undefined} chapter={undefined} />
+            {!splitScreen && (
+                <NavBar book={undefined} chapter={undefined} />
+            )}
 
             <h1 className="title">
                 {myData[language]["book-of-mormon"]} {/* The Book of Mormon: Another Testament of Jesus Christ */}

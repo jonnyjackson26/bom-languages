@@ -15,7 +15,7 @@ const ScriptureBrowser = () => {
 
     return (
         <>
-            <SplitScreenNavBar book={selectedBook} chapter={selectedChapter} />
+            <SplitScreenNavBar book={selectedBook} chapter={selectedChapter} setSelectedChapter={setSelectedChapter} setSelectedBook={setSelectedBook} />
             {selectedBook ? (
                 selectedChapter ? (
                     <ChapterPage book={selectedBook} chapter={selectedChapter} splitScreen={true} setSelectedChapter={setSelectedChapter} setSelectedBook={setSelectedBook} />

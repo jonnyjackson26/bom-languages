@@ -42,7 +42,11 @@ export function ChapterPage({ book, chapter, splitScreen, setSelectedChapter, se
 
     return (
         <>
-            <NavBar book={book} chapter={chapter} />
+            {!splitScreen && (
+                <NavBar book={book} chapter={chapter} />
+            )}
+
+
             <h1 className="title">
                 {theBookOfBOOKNAMEchapterX(language, myData[language][book.urlName], chapter)}
             </h1>

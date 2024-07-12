@@ -5,7 +5,7 @@ import books from '../../../../public/data/books.js';
 import myData from "../../../../public/data/_languages.js";
 import { Context } from "../../../main.jsx";
 
-const SplitScreenNavBar = ({ book, chapter }) => {
+const SplitScreenNavBar = ({ book, chapter, setSelectedBook, setSelectedChapter }) => {
     const [language, setLanguage] = useContext(Context);
 
     const handleLanguageChange = (lang) => {
@@ -14,7 +14,7 @@ const SplitScreenNavBar = ({ book, chapter }) => {
 
     return (
         <nav className="splitscreen-navbar">
-            <SplitScreenPath book={book} chapter={chapter} />
+            <SplitScreenPath book={book} chapter={chapter} setSelectedBook={setSelectedBook} setSelectedChapter={setSelectedChapter} />
 
             <select
                 id="splitscreen-languageSelect"

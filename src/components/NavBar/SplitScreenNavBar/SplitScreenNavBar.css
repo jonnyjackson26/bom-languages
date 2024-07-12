@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: orange;
     padding: 10px 20px;
     z-index: 1000;
     /* Ensure navbar stays on top */

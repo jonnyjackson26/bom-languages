@@ -35,7 +35,10 @@ export function BookPage({ book, splitScreen, setSelectedChapter }) {
 
     return (
         <>
-            <NavBar book={book} chapter={undefined} />
+            {!splitScreen && (
+                <NavBar book={book} chapter={undefined} />
+            )}
+
             <h1 className="title">
                 {theBookOfBOOKNAME(language, book.bookName)} {/* The Book of Jacob, or El Libro de Jacob etc */}
             </h1>
