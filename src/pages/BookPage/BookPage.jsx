@@ -11,7 +11,7 @@ import { Context } from "../../main.jsx";
 export function BookPage({ book, splitScreen, setSelectedChapter }) {
     const [language, setLanguage] = useContext(Context);
 
-    if (splitScreen === false) {
+    if (!splitScreen) {
         DocumentTitle(myData[language][book.urlName]);
     }
 
@@ -20,7 +20,7 @@ export function BookPage({ book, splitScreen, setSelectedChapter }) {
         chapterLinks.push(
             <Link
                 key={i}
-                to={splitScreen ? '#' : `/${book.urlName}`}
+                to={splitScreen ? '#' : `${i}`}
                 onClick={(e) => {
                     if (splitScreen) {
                         e.preventDefault(); // Prevent default link behavior

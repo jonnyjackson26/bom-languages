@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar.jsx';
-import NextButton from '../../components/NextButton/NextButton.jsx'
+import LinkButton from '../../components/LinkButton/LinkButton.jsx';
 import DocumentTitle from "../../components/DocumentTitle.jsx";
 import { theBookOfBOOKNAMEchapterX } from "../../../public/data/_languages.js"
 import { getNextButtonInfo, getPrevButtonInfo } from "../../utils/next-and-prev-button-info.js"
@@ -11,11 +11,13 @@ import books from "../../../public/data/books.js"
 import "../ChapterPage/ChapterPage.css"
 
 
-export function ChapterPage({ book, chapter }) {
+export function ChapterPage({ book, chapter, splitScreen, setSelectedChapter, setSelectedBook }) {
     const [verses, setVerses] = useState([]);
     const [language, setLanguage] = useContext(Context);
 
-    DocumentTitle(myData[language][book.urlName] + " " + chapter);
+    if (!splitScreen) {
+        DocumentTitle(myData[language][book.urlName] + " " + chapter);
+    }
 
     useEffect(() => {
         const fetchVerses = async () => {
@@ -45,10 +47,19 @@ export function ChapterPage({ book, chapter }) {
                 {theBookOfBOOKNAMEchapterX(language, myData[language][book.urlName], chapter)}
             </h1>
 
-            <div className="nextButton-container">
-                <NextButton info={getPrevButtonInfo(book, chapter)} />
-                <NextButton info={getNextButtonInfo(book, chapter)} />
-            </div>
+            {!splitScreen && (
+                <div className="nextButton-container">
+                    <LinkButton text={getPrevButtonInfo(book, chapter).text} path={getPrevButtonInfo(book, chapter).path} />
+                    <LinkButton text={getNextButtonInfo(book, chapter).text} path={getNextButtonInfo(book, chapter).path} />
+                </div>
+            )}
+            {splitScreen && (
+                <div className="nextButton-container">
+                    <LinkButton text={getPrevButtonInfo(book, chapter).text} onClick={(e) => { e.preventDefault(); setSelectedChapter(getPrevButtonInfo(book, chapter).chapter); setSelectedBook(getPrevButtonInfo(book, chapter).book); }} />
+                    <LinkButton text={getNextButtonInfo(book, chapter).text} onClick={(e) => { e.preventDefault(); setSelectedChapter(getNextButtonInfo(book, chapter).chapter); setSelectedBook(getNextButtonInfo(book, chapter).book); }} />
+                </div>
+            )}
+
 
             {verses}
         </>

@@ -17,7 +17,7 @@ export function Home({ splitScreen, setSelectedBook }) {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [isSerif, setIsSerif] = useState(false); // State for font style
 
-    if (splitScreen === false) {
+    if (!splitScreen) {
         DocumentTitle(myData[language]["bookOfMormon"]);
     }
 
