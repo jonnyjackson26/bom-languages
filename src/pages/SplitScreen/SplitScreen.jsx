@@ -1,12 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './SplitScreen.css';
-import NavBar from "../../components/NavBar/NavBar.jsx";
-import SplitScreenLayoutToggle from '../../components/SplitScreenLayoutToggle/SplitScreenLayoutToggle.jsx';
 import ScriptureBroswer from '../../components/ScriptueBrowser/ScriptureBrowser.jsx';
+import SplitScreenFABs from '../../components/SplitScreenFABs/SplitScreenFABs.jsx';
 
 export function SplitScreen() {
     const [layout, setLayout] = useState("column");
+
+    useEffect(() => {
+        // Apply styles to the html and body elements
+        document.documentElement.style.height = '100%';  // Set html height to 100%
+        document.documentElement.style.margin = '0';     // Remove default margin
+        document.documentElement.style.padding = '0';    // Remove default padding
+        document.documentElement.style.overflow = 'hidden';  // Prevent scrolling on html element
+        document.body.style.height = '100%';  // Set body height to 100%
+        document.body.style.margin = '0';     // Remove default margin
+        document.body.style.padding = '0';    // Remove default padding
+        document.body.style.overflow = 'hidden';  // Prevent scrolling on body element
+
+        // Clean up: Reset styles when the component unmounts
+        return () => {
+            document.documentElement.style.height = '';  // Reset html height
+            document.documentElement.style.margin = '';  // Reset html margin
+            document.documentElement.style.padding = '';  // Reset html padding
+            document.documentElement.style.overflow = '';  // Reset html overflow
+            document.body.style.height = '';  // Reset body height
+            document.body.style.margin = '';  // Reset body margin
+            document.body.style.padding = '';  // Reset body padding
+            document.body.style.overflow = '';  // Reset body overflow
+            // Reset other styles as needed
+        };
+    }, []); // Empty dependency array ensures this runs only on mount and unmount
+
 
     useEffect(() => {
         const initialLayout = window.innerWidth <= 768 ? 'row' : 'column';
@@ -47,8 +72,6 @@ export function SplitScreen() {
     return (
         <>
             <div className="split-screen-wrapper">
-                <NavBar book={undefined} chapter={undefined} />
-                <SplitScreenLayoutToggle onToggle={handleLayoutChange} />
                 <div className="splitscreen-container">
                     <div id="splitscreen-1">
                         <ScriptureBroswer />
@@ -57,6 +80,7 @@ export function SplitScreen() {
                         <ScriptureBroswer />
                     </div>
                 </div>
+                <SplitScreenFABs onToggle={handleLayoutChange} /> {/* home button, row layout, col layout*/}
             </div>
         </>
     );
