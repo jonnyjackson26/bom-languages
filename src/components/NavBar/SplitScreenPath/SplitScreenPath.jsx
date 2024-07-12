@@ -5,8 +5,8 @@ import './SplitScreenPath.css';
 
 import { Context } from "../../../main"; //can make custom hook
 
-const SplitScreenPath = ({ book, chapter, setSelectedBook, setSelectedChapter }) => {
-    const [language, setLanguage] = useContext(Context);
+const SplitScreenPath = ({ l, book, chapter, setSelectedBook, setSelectedChapter }) => {
+
     return (
         <>
             <div id="path-container">
@@ -16,7 +16,7 @@ const SplitScreenPath = ({ book, chapter, setSelectedBook, setSelectedChapter })
                     setSelectedChapter(null);
                 }}
                     className="link">
-                    {myData[language]["bookOfMormon"]}
+                    {myData[l]["bookOfMormon"]}
                 </Link>
                 {/* Render book.bookName link only if book is defined */}
                 {book && <Link onClick={(e) => {
@@ -25,7 +25,7 @@ const SplitScreenPath = ({ book, chapter, setSelectedBook, setSelectedChapter })
                     setSelectedChapter(null);
                 }}
                     className="link">
-                    {myData[language][book.urlName]}
+                    {myData[l][book.urlName]}
                 </Link>}
                 {/* Render chapter link only if both book and chapter are defined */}
                 {book && chapter && <Link onClick={(e) => {
@@ -33,7 +33,7 @@ const SplitScreenPath = ({ book, chapter, setSelectedBook, setSelectedChapter })
                     setSelectedChapter(chapter);
                 }}
                     className="link">
-                    {myData[language]["chapter"]} {chapter}
+                    {myData[l]["chapter"]} {chapter}
                 </Link>}
             </div>
         </>

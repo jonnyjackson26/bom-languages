@@ -8,7 +8,7 @@ import myData, { theBookOfBOOKNAME } from "../../../public/data/_languages.js"
 
 import { Context } from "../../main.jsx";
 
-export function BookPage({ book, splitScreen, setSelectedChapter }) {
+export function BookPage({ book, splitScreen, l, setSelectedChapter }) {
     const [language, setLanguage] = useContext(Context);
 
     if (!splitScreen) {
@@ -28,7 +28,7 @@ export function BookPage({ book, splitScreen, setSelectedChapter }) {
                     }
                 }}
             >
-                {myData[language]["chapter"]} {i}
+                {splitScreen ? `${myData[l]["chapter"]} ${i}` : `${myData[language]["chapter"]} ${i}`}
             </Link> // Chapter 6 or Capitulo 6
         );
     }
@@ -40,7 +40,7 @@ export function BookPage({ book, splitScreen, setSelectedChapter }) {
             )}
 
             <h1 className="title">
-                {theBookOfBOOKNAME(language, book.bookName)} {/* The Book of Jacob, or El Libro de Jacob etc */}
+                {splitScreen ? theBookOfBOOKNAME(l, book.bookName) : theBookOfBOOKNAME(language, book.bookName)}
             </h1>
 
             {chapterLinks}

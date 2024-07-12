@@ -11,7 +11,7 @@ import books from "../../../public/data/books.js"
 import "../ChapterPage/ChapterPage.css"
 
 
-export function ChapterPage({ book, chapter, splitScreen, setSelectedChapter, setSelectedBook }) {
+export function ChapterPage({ book, chapter, splitScreen, l, setSelectedChapter, setSelectedBook }) {
     const [verses, setVerses] = useState([]);
     const [language, setLanguage] = useContext(Context);
 
@@ -22,7 +22,13 @@ export function ChapterPage({ book, chapter, splitScreen, setSelectedChapter, se
     useEffect(() => {
         const fetchVerses = async () => {
             try {
-                let path = `data/bom/bom-${language}/${book.urlName}/${chapter}.txt`;
+                let path = "";
+                if (!splitScreen) {
+                    path = `data/bom/bom-${language}/${book.urlName}/${chapter}.txt`;
+                } else {
+                    path = `data/bom/bom-${l}/${book.urlName}/${chapter}.txt`;
+                }
+                console.log(path + ": path")
                 const response = await fetch(path);
                 const text = await response.text();
                 const lines = text.split('\n').slice(0, -1); //I slice because the text files have an empty \n at the end
@@ -36,7 +42,7 @@ export function ChapterPage({ book, chapter, splitScreen, setSelectedChapter, se
             }
         };
         fetchVerses();
-    }, [book.urlName, chapter, language]);
+    }, [book.urlName, chapter, language, l]);
 
 
 
@@ -46,9 +52,8 @@ export function ChapterPage({ book, chapter, splitScreen, setSelectedChapter, se
                 <NavBar book={book} chapter={chapter} />
             )}
 
-
             <h1 className="title">
-                {theBookOfBOOKNAMEchapterX(language, myData[language][book.urlName], chapter)}
+                {splitScreen ? theBookOfBOOKNAMEchapterX(l, myData[language][book.urlName], chapter) : theBookOfBOOKNAMEchapterX(language, myData[language][book.urlName], chapter)}
             </h1>
 
             {!splitScreen && (

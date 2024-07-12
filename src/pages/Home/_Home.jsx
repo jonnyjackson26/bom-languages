@@ -11,7 +11,7 @@ import IconButton from '../../components/IconButton/IconButton.jsx';
 import { Context } from "../../main.jsx";
 import SerifSansSerifToggle from '../../components/SerifSansSerifToggle/SerifSansSerifToggle.jsx';
 
-export function Home({ splitScreen, setSelectedBook }) {
+export function Home({ splitScreen, l, setSelectedBook }) {
     const [language, setLanguage] = useContext(Context);
     const [isGridView, setIsGridView] = useState(true); // State for view mode
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -54,7 +54,7 @@ export function Home({ splitScreen, setSelectedBook }) {
             )}
 
             <h1 className="title">
-                {myData[language]["book-of-mormon"]} {/* The Book of Mormon: Another Testament of Jesus Christ */}
+                {splitScreen ? myData[l]["book-of-mormon"] : myData[language]["book-of-mormon"]}
             </h1>
 
             {!splitScreen && (
@@ -81,7 +81,7 @@ export function Home({ splitScreen, setSelectedBook }) {
                             }
                         }}
                     >
-                        {myData[language][book.urlName]}
+                        {splitScreen ? myData[l][book.urlName] : myData[language][book.urlName]}
                     </Link>
                 ))}
             </div>

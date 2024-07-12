@@ -5,25 +5,26 @@ import books from '../../../../public/data/books.js';
 import myData from "../../../../public/data/_languages.js";
 import { Context } from "../../../main.jsx";
 
-const SplitScreenNavBar = ({ book, chapter, setSelectedBook, setSelectedChapter }) => {
+const SplitScreenNavBar = ({ l, book, chapter, setSelectedBook, setSelectedChapter, setSelectedL }) => {
     const [language, setLanguage] = useContext(Context);
 
     const handleLanguageChange = (lang) => {
-        setLanguage(lang);
+        setSelectedL(lang);
     };
 
     return (
         <nav className="splitscreen-navbar">
-            <SplitScreenPath book={book} chapter={chapter} setSelectedBook={setSelectedBook} setSelectedChapter={setSelectedChapter} />
+            <p>{l}</p>
+            <SplitScreenPath l={l} book={book} chapter={chapter} setSelectedBook={setSelectedBook} setSelectedChapter={setSelectedChapter} />
 
             <select
                 id="splitscreen-languageSelect"
                 onChange={(e) => handleLanguageChange(e.target.value)}
-                value={language}
+                value={l}
             >
                 {Object.keys(myData).map((langKey) => (
                     <option key={langKey} value={langKey}>
-                        {language === langKey ? `🌐` : `${myData[langKey][langKey]} / ${myData[language][langKey]}`}
+                        {l === langKey ? `🌐` : `${myData[langKey][langKey]} / ${myData[l][langKey]}`}
                     </option>
                 ))}
             </select>

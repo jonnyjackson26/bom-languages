@@ -12,26 +12,25 @@ const ScriptureBrowser = () => {
     const [language, setLanguage] = useContext(Context);
     const [selectedBook, setSelectedBook] = useState(null);
     const [selectedChapter, setSelectedChapter] = useState(null);
+    const [selectedL, setSelectedL] = useState("english");
 
     return (
         <>
-            <SplitScreenNavBar book={selectedBook} chapter={selectedChapter} setSelectedChapter={setSelectedChapter} setSelectedBook={setSelectedBook} />
+            <SplitScreenNavBar l={selectedL} book={selectedBook} chapter={selectedChapter} setSelectedChapter={setSelectedChapter} setSelectedBook={setSelectedBook} setSelectedL={setSelectedL} />
             {selectedBook ? (
                 selectedChapter ? (
-                    <ChapterPage book={selectedBook} chapter={selectedChapter} splitScreen={true} setSelectedChapter={setSelectedChapter} setSelectedBook={setSelectedBook} />
+                    <ChapterPage book={selectedBook} chapter={selectedChapter} splitScreen={true} setSelectedChapter={setSelectedChapter} setSelectedBook={setSelectedBook} l={selectedL} />
                 ) : (
                     <BookPage book={selectedBook}
                         splitScreen={true}
                         setSelectedChapter={setSelectedChapter}
+                        l={selectedL}
                     />
                 )
             ) : (
                 <Home
+                    l={selectedL}
                     splitScreen={true}
-                    books={books}
-                    isGridView={true} // or false based on your state
-                    language={language}
-                    myData={myData}
                     setSelectedBook={setSelectedBook}
                 />
             )}
