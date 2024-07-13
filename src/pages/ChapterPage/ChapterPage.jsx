@@ -28,7 +28,6 @@ export function ChapterPage({ book, chapter, splitScreen, l, setSelectedChapter,
                 } else {
                     path = `data/bom/bom-${l}/${book.urlName}/${chapter}.txt`;
                 }
-                console.log(path + ": path")
                 const response = await fetch(path);
                 const text = await response.text();
                 const lines = text.split('\n').slice(0, -1); //I slice because the text files have an empty \n at the end
@@ -53,7 +52,7 @@ export function ChapterPage({ book, chapter, splitScreen, l, setSelectedChapter,
             )}
 
             <h1 className="title">
-                {splitScreen ? theBookOfBOOKNAMEchapterX(l, myData[language][book.urlName], chapter) : theBookOfBOOKNAMEchapterX(language, myData[language][book.urlName], chapter)}
+                {splitScreen ? theBookOfBOOKNAMEchapterX(l, myData[l][book.urlName], chapter) : theBookOfBOOKNAMEchapterX(language, myData[language][book.urlName], chapter)}
             </h1>
 
             {!splitScreen && (

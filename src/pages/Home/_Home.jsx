@@ -61,9 +61,9 @@ export function Home({ splitScreen, l, setSelectedBook }) {
                 <>
                     <GridListViewSwitcher onViewChange={handleViewChange} />
                     <DarkLightToggle onToggle={handleLightDarkModeToggle} />
-                    <SerifSansSerifToggle onToggle={handleFontToggle} />
+                    {/*<SerifSansSerifToggle onToggle={handleFontToggle} />
                     <IconButton to="/home" icon="fas fa-home" />
-                    <IconButton to="/settings" icon="fas fa-cog" />
+                    <IconButton to="/settings" icon="fas fa-cog" />*/}
                     <IconButton to="/split-screen" icon="fa-solid fa-language" />
                 </>
             )}
