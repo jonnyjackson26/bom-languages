@@ -3,7 +3,10 @@
 }
 
 .link {
-    color: rgb(213, 73, 73);
+    color: rgb(245, 89, 89);
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
 }
 
 .link:not(:last-child)+.link::before {

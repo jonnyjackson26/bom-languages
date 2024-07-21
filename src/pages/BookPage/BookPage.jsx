@@ -50,7 +50,7 @@ export function BookPage({ book, splitScreen, l, setSelectedChapter }) {
                 {splitScreen ? theBookOfBOOKNAME(l, book.bookName) : theBookOfBOOKNAME(language, book.bookName)}
             </h1>
 
-            <div class="chapters-container">
+            <div className="chapters-container">
                 {chapterLinks}
             </div>
 
