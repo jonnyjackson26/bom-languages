@@ -5,7 +5,7 @@ import LinkButton from '../../components/LinkButton/LinkButton.jsx';
 import DocumentTitle from "../../components/DocumentTitle.jsx";
 import { theBookOfBOOKNAMEchapterX } from "../../../public/data/_languages.js"
 import { getNextButtonInfo, getPrevButtonInfo } from "../../utils/next-and-prev-button-info.js"
-import { Context } from "../../main.jsx";
+import { LanguageContext, ThemeContext } from "../../main.jsx";
 import myData from "../../../public/data/_languages.js"
 import books from "../../../public/data/books.js"
 import "../ChapterPage/ChapterPage.css"
@@ -13,7 +13,13 @@ import "../ChapterPage/ChapterPage.css"
 
 export function ChapterPage({ book, chapter, splitScreen, l, setSelectedChapter, setSelectedBook }) {
     const [verses, setVerses] = useState([]);
-    const [language, setLanguage] = useContext(Context);
+    const { language, setLanguage } = useContext(LanguageContext);
+    const { theme, setTheme } = useContext(ThemeContext);
+
+    useEffect(() => {
+        document.body.classList.toggle('dark-mode', theme === 'dark');
+        document.body.classList.toggle('light-mode', theme === 'light');
+    }, [theme]);
 
     if (!splitScreen) {
         DocumentTitle(myData[language][book.urlName] + " " + chapter);

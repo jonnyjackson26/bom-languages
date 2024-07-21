@@ -1,13 +1,14 @@
 import "./ScriptureBrowser.css"
 import React, { useContext, useState } from 'react';
-import { Context } from "../../main.jsx";
+import { LanguageContext, ThemeContext } from "../../main.jsx";
 import SplitScreenNavBar from "../NavBar/SplitScreenNavBar/SplitScreenNavBar.jsx";
 import { ChapterPage } from '../../pages/ChapterPage/ChapterPage.jsx';
 import { BookPage } from '../../pages/BookPage/BookPage.jsx';
 import Home from "../../pages/Home/_Home.jsx";
 
 const ScriptureBrowser = () => {
-    const [language, setLanguage] = useContext(Context);
+    const [language, setLanguage] = useContext(LanguageContext);
+    const [theme, LanguageContext] = useContext(ThemeContext);
     const [selectedBook, setSelectedBook] = useState(null);
     const [selectedChapter, setSelectedChapter] = useState(null);
     const [selectedL, setSelectedL] = useState(language);

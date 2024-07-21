@@ -3,18 +3,27 @@ import './NavBar.css';
 import Path from './Path/Path.jsx'
 import books from '../../../public/data/books.js';
 import myData from "../../../public/data/_languages.js";
-import { Context } from "../../main.jsx";
+import { LanguageContext, ThemeContext } from "../../main.jsx";
+import CustomDropdown from '../CustomDropdown/CustomDropdown.jsx';
 
 const NavBar = ({ book, chapter }) => {
-    const [language, setLanguage] = useContext(Context);
+    const { language, setLanguage } = useContext(LanguageContext);
+    const { theme, setTheme } = useContext(ThemeContext);
 
     const handleLanguageChange = (lang) => {
         setLanguage(lang);
     };
 
+    const handleToggle = (name, checked) => {
+        console.log(`${name} is ${checked ? 'checked' : 'unchecked'}`);
+    };
+
     return (
         <nav className="navbar">
+            <CustomDropdown onToggle={handleToggle} />
             <Path book={book} chapter={chapter} />
+
+
 
             <select
                 id="languageSelect"

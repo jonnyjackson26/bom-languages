@@ -3,7 +3,6 @@ import './SplitScreenNavBar.css';
 import SplitScreenPath from '../SplitScreenPath/SplitScreenPath.jsx';
 import books from '../../../../public/data/books.js';
 import myData from "../../../../public/data/_languages.js";
-import { Context } from "../../../main.jsx";
 
 const SplitScreenNavBar = ({ l, book, chapter, setSelectedBook, setSelectedChapter, setSelectedL }) => {
 

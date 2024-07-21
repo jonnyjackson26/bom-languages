@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, createContext } from 'react';
 import ReactDOM from 'react-dom/client'
 import { Home } from './pages/Home/_Home.jsx'
 import { BookPage } from './pages/BookPage/BookPage.jsx'
@@ -40,17 +40,20 @@ const router = createHashRouter([
   ...routerList
 ])
 
-export const Context = React.createContext();
+export const LanguageContext = createContext();
+export const ThemeContext = createContext();
 
 function Main() {
-
   const [language, setLanguage] = useState('english');
+  const [theme, setTheme] = useState('light');
 
   return (
-    <Context.Provider value={[language, setLanguage]}>
-      <RouterProvider router={router} />
-    </Context.Provider>
-  )
+    <LanguageContext.Provider value={{ language, setLanguage }}>
+      <ThemeContext.Provider value={{ theme, setTheme }}>
+        <RouterProvider router={router} />
+      </ThemeContext.Provider>
+    </LanguageContext.Provider>
+  );
 }
 
 

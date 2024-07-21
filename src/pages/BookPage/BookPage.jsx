@@ -6,10 +6,16 @@ import DocumentTitle from "../../components/DocumentTitle.jsx";
 
 import myData, { theBookOfBOOKNAME } from "../../../public/data/_languages.js"
 
-import { Context } from "../../main.jsx";
+import { LanguageContext, ThemeContext } from "../../main.jsx";
 
 export function BookPage({ book, splitScreen, l, setSelectedChapter }) {
-    const [language, setLanguage] = useContext(Context);
+    const { language, setLanguage } = useContext(LanguageContext);
+    const { theme, setTheme } = useContext(ThemeContext);
+
+    useEffect(() => {
+        document.body.classList.toggle('dark-mode', theme === 'dark');
+        document.body.classList.toggle('light-mode', theme === 'light');
+    }, [theme]);
 
     if (!splitScreen) {
         DocumentTitle(myData[language][book.urlName]);

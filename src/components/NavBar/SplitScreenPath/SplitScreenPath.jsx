@@ -3,7 +3,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import myData from '../../../../public/data/_languages'
 import './SplitScreenPath.css';
 
-import { Context } from "../../../main"; //can make custom hook
 
 const SplitScreenPath = ({ l, book, chapter, setSelectedBook, setSelectedChapter }) => {
 

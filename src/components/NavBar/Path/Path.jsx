@@ -3,10 +3,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import myData from '../../../../public/data/_languages'
 import './Path.css';
 
-import { Context } from "../../../main"; //can make custom hook
+import { LanguageContext, ThemeContext } from "../../../main.jsx"; //can make custom hook
 
 const Path = ({ book, chapter }) => {
-    const [language, setLanguage] = useContext(Context);
+    const { language, setLanguage } = useContext(LanguageContext);
+    const { theme, setTheme } = useContext(ThemeContext);
+
     return (
         <>
             <div id="path-container">
