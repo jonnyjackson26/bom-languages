@@ -5,14 +5,12 @@ import books from '../../../public/data/books.js';
 import NavBar from "../../components/NavBar/NavBar.jsx";
 import myData from "../../../public/data/_languages.js";
 import DocumentTitle from "../../components/DocumentTitle.jsx";
-import GridListViewSwitcher from "../../components/GridListViewSwitcher/GridListViewSwitcher.jsx";
 import IconButton from '../../components/IconButton/IconButton.jsx';
 import { LanguageContext, ThemeContext } from "../../main.jsx";
 
 export function Home({ splitScreen, l, setSelectedBook }) {
     const { language, setLanguage } = useContext(LanguageContext);
     const { theme, setTheme } = useContext(ThemeContext);
-    const [isGridView, setIsGridView] = useState(true); // State for view mode
 
     useEffect(() => {
         document.body.classList.toggle('dark-mode', theme === 'dark');
@@ -22,10 +20,6 @@ export function Home({ splitScreen, l, setSelectedBook }) {
     if (!splitScreen) {
         DocumentTitle(myData[language]["bookOfMormon"]);
     }
-
-    const handleViewChange = (isGrid) => {
-        setIsGridView(isGrid); // Update view mode state
-    };
 
 
     return (
@@ -40,15 +34,14 @@ export function Home({ splitScreen, l, setSelectedBook }) {
 
             {!splitScreen && (
                 <>
-                    <GridListViewSwitcher onViewChange={handleViewChange} />
                     <IconButton to="/split-screen" icon="fa-solid fa-language" />
                 </>
             )}
 
-            <div className={isGridView ? "book-container-grid" : "book-container-list"}>
+            <div className="book-container-grid">
                 {books.map((book) => (
                     <Link
-                        className={isGridView ? "book-grid" : "book-list"}
+                        className={"book-grid"}
                         key={book.urlName}
                         to={splitScreen ? '#' : `/${book.urlName}`}
                         onClick={(e) => {

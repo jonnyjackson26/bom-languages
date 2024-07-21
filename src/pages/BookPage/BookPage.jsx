@@ -27,6 +27,7 @@ export function BookPage({ book, splitScreen, l, setSelectedChapter }) {
             <Link
                 key={i}
                 to={splitScreen ? '#' : `${i}`}
+                className="chapter-item"
                 onClick={(e) => {
                     if (splitScreen) {
                         e.preventDefault(); // Prevent default link behavior
@@ -49,7 +50,10 @@ export function BookPage({ book, splitScreen, l, setSelectedChapter }) {
                 {splitScreen ? theBookOfBOOKNAME(l, book.bookName) : theBookOfBOOKNAME(language, book.bookName)}
             </h1>
 
-            {chapterLinks}
+            <div class="chapters-container">
+                {chapterLinks}
+            </div>
+
         </>
     );
 }

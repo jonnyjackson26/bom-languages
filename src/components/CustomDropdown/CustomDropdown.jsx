@@ -1,10 +1,14 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { LanguageContext, ThemeContext } from "../../main.jsx";
 import './CustomDropdown.css';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 const CustomDropdown = ({ onToggle }) => {
     const { language, setLanguage } = useContext(LanguageContext);
     const { theme, setTheme } = useContext(ThemeContext);
+    const dropdownRef = useRef(null);
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [toggles, setToggles] = useState({
@@ -35,8 +39,21 @@ const CustomDropdown = ({ onToggle }) => {
         });
     };
 
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setIsDropdownOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
-        <div className="custom-dropdown">
+        <div className="custom-dropdown" ref={dropdownRef}>
             <button className="dropdown-button" onClick={handleDropdownToggle}>
                 &#x22EE;
             </button>
